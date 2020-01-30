@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title> Приложение для отслеживания собственных дел</title>
+
   {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
     <link rel="stylesheet" href="{% static 'style.css' %}">
    <link rel="stylesheet" type="text/css" href="{% static 'bulma.min.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,14 +13,14 @@
 <body>
 <div django-app="TaskManager">
     <div class="columns has-background-black-ter is-centered has-text-white-bis main">
-            <div class="column is-half content">
+            <div class="column is-half">
             <h1 class="is-size-3  has-text-centered">  Список дел </h1>
             <form action="" method="post">
             {% csrf_token %} <!-- csrf для базовой безопасности нашего приложения -->
                 <div class="field has-text-centered">
                     <label for="description" class="label  has-text-white-bis">Введите дело</label>
                     <div class="control">
-                        <input type="text" id="description" class="input" placeholder="Какие у вас есть дела?" name="description" required>
+                        <input type="text" id="description" class="input" placeholder="Чем собираетесь заняться?" name="description" required>
                     </div>
                 </div>
                 <div class="columns">
@@ -42,19 +44,19 @@
                 </div>
                     </div>
                 <div class="column">
-                    <div class="field is-grouped">
+                    <div class="field">
                     <button class="button is-primary" name="taskAdd" type="submit">
                         <span class="icon is-small">
                             <i class="fa fa-plus"></i>
                         </span>
-                        <span>Добавить дело</span>
+                        <span>Добавить задание</span>
                     </button>
                     <button class="button is-link taskDelete" name="taskDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();">
                         <span class="icon is-small">
                             <i class="fa fa-trash-o"></i>
                         </span>
                         <span>
-                        Удалить дела
+                        Удалить дело
                         </span>
                     </button>
                 </div>
@@ -67,8 +69,8 @@
                     <input type="checkbox" class=" checkbox" name="checkedbox" value="{{ todo.id }}">
                         <span class="complete-">{{ todo.title }}</span>
                         </label>
-                    <span class="category-{{ todo.category }} subtitle">{{ todo.category }}</span>
-                    <strong class="taskDate"><i class="fa fa-calendar"></i>{{ todo.created }} - {{ todo.due_date }}</strong>
+                    <span class=" category-{{ todo.category }} has-text-info">{{ todo.category }}</span>
+                    <strong class="is-pulled-right"><i class="fa fa-calendar"></i>{{ todo.created }} - {{ todo.due_date }}</strong>
                 </div>
             {% endfor %}
             </div>
