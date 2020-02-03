@@ -3,8 +3,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from .models import TodoList, Category
 
 def redirect_view(request):
-    response = redirect('/category')
-    return render(request, response)
+    return redirect("/category")  # reloading the page
 
 def todo(request): #the index view
     todos = TodoList.objects.all() #запрашиваем все объекты todo через менеджер объектов
