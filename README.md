@@ -1,2 +1,2 @@
-**Django project **
+*Django project *
 Простое todo приложение на django, не иделальное и не идеально задокументированное. Pull request приветствуются
